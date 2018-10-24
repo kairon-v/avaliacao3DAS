@@ -2,19 +2,18 @@ package Calculadoras;
 
 import Cadastros.Viagem;
 
-public class DuracaoMinutos {
-	public Viagem viagem;
-	public int duracaoMinutos;
-	
+public class DuracaoMinutos extends BaseTempo {
+
 	public DuracaoMinutos(Viagem viagem) {
-		this.viagem = viagem;
+		super(viagem);
 	}
-	
+
+	public int duracaoMinutos;
+
 	public int calcular() {
-		int minutosTermino = viagem.getMinutosTermino();
-		int minutosInicio = viagem.getMinutoInicio();
-		
-		if (minutosTermino > minutosInicio) 
+		int minutosTermino = getViagem().getMinutosTermino();
+		int minutosInicio = getViagem().getMinutoInicio();
+		if (minutosTerminoMaiorQMinutosInicio()) 
 			duracaoMinutos = minutosTermino - minutosInicio;
 		else {
 			duracaoMinutos = 60 - minutosInicio + minutosTermino;
@@ -23,4 +22,5 @@ public class DuracaoMinutos {
 		}
 		return duracaoMinutos;
 	}
+
 }
